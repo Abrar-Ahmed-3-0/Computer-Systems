@@ -1,0 +1,8 @@
+<<comment
+Write a shell script program (evenodd.sh) which adds the odd numbers in odd lines and adds the even numbers in even lines.
+Write the result on the standard output! In each lines there are at least 2 numbers. The filename is given by a parameter.
+comment
+
+perl -lne '$x= $. & 1; $z[$x] += $_ for grep {($_ & 1) == $x} /\d+/g;
+           END { print "Sum of odd numbers on odd lines: " . (0+$z[1]);
+          print "Sum of even numbers on even lines: " . (0+$z[0]); }' < $1
